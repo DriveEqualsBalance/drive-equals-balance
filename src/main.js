@@ -235,7 +235,7 @@ document.querySelector('#app').innerHTML = `
     </div>
     <aside class="partner__aside" aria-labelledby="partner-contact-heading">
       <h3 id="partner-contact-heading" class="partner__aside-title">Get in touch</h3>
-      <p class="partner__aside-lede">Tell me a bit about your idea — I reply to every serious enquiry.</p>
+      <p class="partner__aside-lede">Tell me a bit about your idea.</p>
       <ul class="partner__cta-list">
         <li>
           <a
