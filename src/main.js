@@ -366,8 +366,13 @@ const siteNavMenu = document.querySelector('.site-nav__menu')
 
 function syncSiteNavScrollFade() {
   if (!siteNav) return
+  /* Bar background vars only used below 769px; hero + footer use transparent CSS */
+  if (window.matchMedia('(min-width: 769px)').matches) {
+    siteNav.style.removeProperty('--site-nav-bg-alpha')
+    siteNav.style.removeProperty('--site-nav-blur')
+    return
+  }
   const y = window.scrollY || document.documentElement.scrollTop
-  /* Mobile only: bar background fades with scroll (desktop hero uses transparent CSS) */
   const t = Math.min(1, y / 420)
   const alpha = 0.72 * (1 - t) + 0.22 * t
   const blurPx = 14 * (1 - t) + 6 * t
@@ -406,7 +411,14 @@ function onSiteNavScroll() {
 
 if (siteNav) {
   window.addEventListener('scroll', onSiteNavScroll, { passive: true })
-  window.addEventListener('resize', syncSiteNavPageTheme, { passive: true })
+  window.addEventListener(
+    'resize',
+    () => {
+      syncSiteNavScrollFade()
+      syncSiteNavPageTheme()
+    },
+    { passive: true }
+  )
   onSiteNavScroll()
 }
 
