@@ -18,7 +18,7 @@ document.querySelector('#app').innerHTML = `
   <div class="hero-main">
     <p class="hero-eyebrow">Drive Equals Balance</p>
     <h1>Motorcycle training that builds real road confidence</h1>
-    <p class="hero-lede">Practical coaching for balance, control, and calm riding—whether you&rsquo;re starting out or leveling up.</p>
+    <p class="hero-lede">Practical coaching for balance, control, and calm riding, whether you&rsquo;re starting out or leveling up.</p>
   </div>
   <ul class="hero-ctas">
     <li><button type="button" class="btn btn--primary">Book a Lesson</button></li>
@@ -31,7 +31,7 @@ document.querySelector('#app').innerHTML = `
 <section id="next-steps">
   <div id="start-here">
     <h2>Start Here (Free Lesson)</h2>
-    <p class="free-lesson-lede">Try a full free lesson—real drills you can use on your next ride.</p>
+    <p class="free-lesson-lede">Try a full free lesson, real drills you can use on your next ride.</p>
     <ul class="value-bullets">
       <li>Slow-speed control and tight turns</li>
       <li>Clutch and throttle balance</li>
