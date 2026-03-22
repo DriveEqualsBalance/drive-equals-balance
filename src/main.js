@@ -3,6 +3,9 @@ import heroImg from './assets/logo.png'
 
 const assetBase = import.meta.env.BASE_URL
 
+/** Set your partnership inbox (leave empty to hide the email button). */
+const partnerEmail = 'driveequalsbalance@gmail.com'
+
 /** YouTube IDs from the watch URL (…watch?v=____). Swap in four of your lesson clips. */
 const lessonGalleryVideos = [
   { id: 'NJ5Tj8oeJBc', title: 'Drive Equals Balance — Mod 1' },
@@ -193,20 +196,75 @@ document.querySelector('#app').innerHTML = `
   </div>
 </section>
 
+<section id="partner" class="partner" aria-labelledby="partner-heading">
+  <div class="partner__layout">
+    <div class="partner__main">
+      <h2 id="partner-heading">Partner With Drive Equals Balance</h2>
+      <p class="partner__lede">Let&rsquo;s collaborate on training, content, and brand partnerships.</p>
+      <div class="partner__body">
+        <p>
+          If you&rsquo;ve got an idea, a collaboration in mind, or you think there&rsquo;s a way we could work together, I&rsquo;d love to hear from you. Whether you&rsquo;re a brand, a training school, or a fellow creator, I&rsquo;m always open to opportunities that bring real value to riders and the community. Reach out and let&rsquo;s see what we can build together.
+        </p>
+      </div>
+    </div>
+    <aside class="partner__aside" aria-labelledby="partner-contact-heading">
+      <h3 id="partner-contact-heading" class="partner__aside-title">Get in touch</h3>
+      <p class="partner__aside-lede">Tell me a bit about your idea — I reply to every serious enquiry.</p>
+      <ul class="partner__cta-list">
+        <li>
+          <a
+            href="https://www.instagram.com/drive.equals.balance"
+            class="partner__cta partner__cta--instagram"
+            target="_blank"
+            rel="noopener noreferrer">
+            <svg class="partner__cta-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#instagram-icon"></use></svg>
+            <span class="partner__cta-text">Message on Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/@driveequalsbalance"
+            class="partner__cta partner__cta--youtube"
+            target="_blank"
+            rel="noopener noreferrer">
+            <svg class="partner__cta-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#youtube-icon"></use></svg>
+            <span class="partner__cta-text">YouTube channel</span>
+          </a>
+        </li>
+        ${
+          partnerEmail
+            ? `<li>
+          <a
+            href="mailto:${partnerEmail}?subject=${encodeURIComponent('Partnership — Drive Equals Balance')}"
+            class="partner__cta partner__cta--email"
+            aria-label="Email ${partnerEmail} about a partnership">
+            <svg class="partner__cta-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#email-icon"></use></svg>
+            <span class="partner__cta-text">Email</span>
+          </a>
+        </li>`
+            : ''
+        }
+      </ul>
+    </aside>
+  </div>
+</section>
+
 <footer class="site-footer">
-  <div class="site-footer__inner">
+  <div class="site-footer__inner${partnerEmail ? ' site-footer__inner--three-cols' : ''}">
     <section class="site-footer__block" aria-labelledby="footer-partners-heading">
       <h2 id="footer-partners-heading">Partners</h2>
-      <p class="site-footer__text">
-        Courses and test routes delivered with a trusted local training school.
-      </p>
-      <a
-        href="https://passmastersmct.co.uk/"
-        class="site-footer__partner-link"
-        target="_blank"
-        rel="noopener noreferrer">
-        Pass Masters Motorcycle Training
-      </a>
+      <div class="site-footer__partner-links">
+        <a
+          href="https://passmastersmct.co.uk/"
+          class="site-footer__partner-link"
+          target="_blank"
+          rel="noopener noreferrer">
+          Pass Masters Motorcycle Training
+        </a>
+        <a href="#partner" class="site-footer__collab-link">
+          Partner with Drive Equals Balance
+        </a>
+      </div>
     </section>
     <section class="site-footer__block site-footer__block--social" aria-labelledby="footer-social-heading">
       <h2 id="footer-social-heading">Social</h2>
@@ -243,6 +301,19 @@ document.querySelector('#app').innerHTML = `
         </li>
       </ul>
     </section>
+    ${
+      partnerEmail
+        ? `<section class="site-footer__block site-footer__block--contact" aria-labelledby="footer-contact-heading">
+      <h2 id="footer-contact-heading">Contact</h2>
+      <a
+        href="mailto:${partnerEmail}"
+        class="site-footer__contact-link">
+        <svg class="site-footer__contact-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#email-icon"></use></svg>
+        <span class="site-footer__contact-email">${partnerEmail}</span>
+      </a>
+    </section>`
+        : ''
+    }
   </div>
   <p class="site-footer__meta">© Drive Equals Balance</p>
 </footer>
