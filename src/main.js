@@ -70,6 +70,35 @@ const testRoutesGalleryHtml =
     </div>`
 
 document.querySelector('#app').innerHTML = `
+<header class="site-nav">
+  <div class="site-nav__bar">
+    <a
+      href="#center"
+      class="site-nav__brand"
+      aria-label="Drive Equals Balance — top of page">
+      <img src="${heroImg}" width="100" height="100" alt="" decoding="async">
+    </a>
+    <button
+      type="button"
+      class="site-nav__toggle"
+      aria-expanded="false"
+      aria-controls="site-nav-menu"
+      aria-label="Open page sections menu">
+      <span class="site-nav__toggle-bars" aria-hidden="true">
+        <span class="site-nav__toggle-bar"></span>
+        <span class="site-nav__toggle-bar"></span>
+        <span class="site-nav__toggle-bar"></span>
+      </span>
+    </button>
+    <nav class="site-nav__menu" id="site-nav-menu" aria-label="On this page">
+      <ul class="site-nav__list">
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#lessons">Lessons</a></li>
+        <li><a href="#partner" class="site-nav__link--cta">Partner</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 <section id="center" class="hero-container">
   <div class="hero-bg" aria-hidden="true">
     <video class="hero-background" autoplay muted loop playsinline preload="auto">
@@ -77,9 +106,6 @@ document.querySelector('#app').innerHTML = `
       <source src="${assetBase}hero-background.mov">
     </video>
     <div class="hero-bg-overlay"></div>
-  </div>
-  <div class="hero">
-    <img src="${heroImg}" class="base" alt="Drive Equals Balance">
   </div>
   <div class="hero-main">
     <p class="hero-eyebrow">Drive Equals Balance</p>
@@ -331,5 +357,80 @@ if (heroVideo) {
     console.warn(
       'Hero background video failed to load or decode. If you use Chrome/Firefox, export an H.264 .mp4 to public/hero-background.mp4 — .mov often only works reliably in Safari.'
     )
+  })
+}
+
+const siteNav = document.querySelector('.site-nav')
+const siteNavToggle = document.querySelector('.site-nav__toggle')
+const siteNavMenu = document.querySelector('.site-nav__menu')
+
+function syncSiteNavScrollFade() {
+  if (!siteNav) return
+  const y = window.scrollY || document.documentElement.scrollTop
+  /* Mobile only: bar background fades with scroll (desktop hero uses transparent CSS) */
+  const t = Math.min(1, y / 420)
+  const alpha = 0.72 * (1 - t) + 0.22 * t
+  const blurPx = 14 * (1 - t) + 6 * t
+  siteNav.style.setProperty('--site-nav-bg-alpha', String(alpha))
+  siteNav.style.setProperty('--site-nav-blur', `${blurPx}px`)
+}
+
+function syncSiteNavPageTheme() {
+  if (!siteNav) return
+  const hero = document.querySelector('#center')
+  const footer = document.querySelector('.site-footer')
+  if (!hero) return
+  const navH = siteNav.getBoundingClientRect().height
+  const heroBottom = hero.getBoundingClientRect().bottom
+  /* Nav strip below hero content → light sections; switch back over dark footer */
+  const pastHero = heroBottom <= navH + 1
+  let overFooter = false
+  if (footer) {
+    const ft = footer.getBoundingClientRect()
+    overFooter = ft.top < navH && ft.bottom > 0
+  }
+  siteNav.classList.toggle('site-nav--on-light', pastHero && !overFooter)
+}
+
+function closeSiteNavMenu() {
+  if (!siteNav || !siteNavToggle || !siteNavMenu) return
+  siteNav.classList.remove('site-nav--menu-open')
+  siteNavToggle.setAttribute('aria-expanded', 'false')
+  siteNavToggle.setAttribute('aria-label', 'Open page sections menu')
+}
+
+function onSiteNavScroll() {
+  syncSiteNavScrollFade()
+  syncSiteNavPageTheme()
+}
+
+if (siteNav) {
+  window.addEventListener('scroll', onSiteNavScroll, { passive: true })
+  window.addEventListener('resize', syncSiteNavPageTheme, { passive: true })
+  onSiteNavScroll()
+}
+
+if (siteNav && siteNavToggle && siteNavMenu) {
+  siteNavToggle.addEventListener('click', () => {
+    const isOpen = siteNav.classList.toggle('site-nav--menu-open')
+    siteNavToggle.setAttribute('aria-expanded', String(isOpen))
+    siteNavToggle.setAttribute(
+      'aria-label',
+      isOpen ? 'Close page sections menu' : 'Open page sections menu'
+    )
+  })
+
+  siteNavMenu.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', () => closeSiteNavMenu())
+  })
+
+  document.addEventListener('click', (e) => {
+    if (!siteNav.classList.contains('site-nav--menu-open')) return
+    if (siteNav.contains(e.target)) return
+    closeSiteNavMenu()
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeSiteNavMenu()
   })
 }
