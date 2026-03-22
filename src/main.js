@@ -21,8 +21,8 @@ document.querySelector('#app').innerHTML = `
     <p class="hero-lede">Practical coaching for balance, control, and calm riding, whether you&rsquo;re starting out or leveling up.</p>
   </div>
   <ul class="hero-ctas">
-    <li><button type="button" class="btn btn--primary"><a href="https://passmastersmct.co.uk/course/" target="_blank" rel="noopener noreferrer">Book a Lesson</a></button></li>
-    <li><a href="#start-here" class="btn btn--secondary"><a href="https://www.youtube.com/@driveequalsbalance" target="_blank" rel="noopener noreferrer">Watch Free Lessons</a></li>
+    <li><a href="https://passmastersmct.co.uk/course/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Book a Lesson</a></li>
+    <li><a href="https://www.youtube.com/@driveequalsbalance" class="btn btn--secondary">Watch Free Lessons</a></li>
   </ul>
 </section>
 

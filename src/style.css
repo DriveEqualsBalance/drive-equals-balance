@@ -384,6 +384,14 @@ code {
   outline-offset: 3px;
 }
 
+a.btn.btn--primary:visited {
+  color: #fff;
+}
+
+a.btn.btn--secondary:visited {
+  color: #fff;
+}
+
 /* Free lesson block */
 #start-here .free-lesson-lede {
   margin-top: 0.35rem;
