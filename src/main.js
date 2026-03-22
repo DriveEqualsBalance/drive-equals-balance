@@ -11,9 +11,29 @@ const lessonGalleryVideos = [
   { id: 'xb3ZrO0oppk', title: 'Drive Equals Balance — Show Me tell Me Part 2' },
 ]
 
-const lessonsGalleryHtml = lessonGalleryVideos
-  .map(
-    (video, index) => `
+/** First three videos from UK Motorcycle Mod 2 Test Routes playlist. */
+const MOD2_TEST_ROUTES_PLAYLIST =
+  'https://www.youtube.com/playlist?list=PLd22z6xjHbud0v3VgYPixM1ic3NxxoZOV'
+
+const testRouteGalleryVideos = [
+  {
+    id: 'sMQ6GmbscqQ',
+    title: 'Module 2 Uxbridge test centre route 2026 — commentary ride 1',
+  },
+  {
+    id: 'f4rNteWHkag',
+    title: 'Redditch Mod 2 test route — tips to pass first time',
+  },
+  {
+    id: 'IWmG9Z2b8lE',
+    title: 'Mod 2 at Garretts Green — test route with commentary',
+  },
+]
+
+function buildLessonsGalleryHtml(videos) {
+  return videos
+    .map(
+      (video, index) => `
     <div class="lessons-gallery__item" role="listitem">
       <div class="lessons-gallery__embed">
         <iframe
@@ -26,8 +46,25 @@ const lessonsGalleryHtml = lessonGalleryVideos
           loading="${index === 0 ? 'eager' : 'lazy'}"></iframe>
       </div>
     </div>`
-  )
-  .join('')
+    )
+    .join('')
+}
+
+const lessonsGalleryHtml = buildLessonsGalleryHtml(lessonGalleryVideos)
+
+const testRoutesGalleryHtml =
+  buildLessonsGalleryHtml(testRouteGalleryVideos) +
+  `
+    <div class="lessons-gallery__item" role="listitem">
+      <a
+        href="${MOD2_TEST_ROUTES_PLAYLIST}"
+        class="lessons-gallery__cta-card"
+        target="_blank"
+        rel="noopener noreferrer">
+        <svg class="lessons-gallery__cta-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#youtube-icon"></use></svg>
+        <span class="lessons-gallery__cta-label">Watch more on YouTube</span>
+      </a>
+    </div>`
 
 document.querySelector('#app').innerHTML = `
 <section id="center" class="hero-container">
@@ -141,6 +178,16 @@ document.querySelector('#app').innerHTML = `
         role="list"
         aria-label="More lesson videos — scroll horizontally">
         ${lessonsGalleryHtml}
+      </div>
+    </div>
+    <div class="lessons-gallery" aria-labelledby="test-routes-gallery-heading">
+      <h3 id="test-routes-gallery-heading" class="lessons-gallery__title">Test routes</h3>
+      <div
+        class="lessons-gallery__scroller"
+        tabindex="0"
+        role="list"
+        aria-label="Test route videos and YouTube link — scroll horizontally">
+        ${testRoutesGalleryHtml}
       </div>
     </div>
   </div>

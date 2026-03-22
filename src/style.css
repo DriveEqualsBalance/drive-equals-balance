@@ -749,6 +749,58 @@ a.btn.btn--secondary:visited {
   border: 0;
 }
 
+.lessons-gallery__cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 160px;
+  padding: 1rem 1.1rem;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  text-align: center;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.08),
+    0 12px 24px -4px rgba(0, 0, 0, 0.12);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.12s ease;
+}
+
+.lessons-gallery__cta-card:hover {
+  background: var(--accent-hover);
+  box-shadow:
+    0 6px 12px -2px rgba(0, 0, 0, 0.12),
+    0 14px 28px -6px rgba(0, 0, 0, 0.14);
+}
+
+.lessons-gallery__cta-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.lessons-gallery__cta-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
+
+.lessons-gallery__cta-label {
+  max-width: 11rem;
+}
+
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
