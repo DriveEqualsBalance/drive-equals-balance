@@ -1,5 +1,6 @@
 import './style.css'
 import heroImg from './assets/logo.png'
+import r1CoverImg from './assets/r1-cover.JPG'
 import { initSiteNav } from './init-site-nav.js'
 import { getSiteNavHtml } from './site-nav-html.js'
 import { getSiteFooterHtml } from './site-footer-html.js'
@@ -121,13 +122,32 @@ ${getSiteNavHtml({
   <div class="featured__inner">
     <p class="mission__eyebrow">Project R1</p>
     <h2 id="project-r1-heading" class="mission__title">Full A licence on a Yamaha R1</h2>
-    <div class="featured__teaser-body mission__body">
-      <p>
-        <strong>Project R1</strong> — five London episodes with me and Francis Noakes (<a href="https://www.youtube.com/@drivingschooltv" class="featured__inline-link" target="_blank" rel="noopener noreferrer">Driving School TV</a>): real Mod 1 and Mod 2 training on a superbike, with new episodes through 2026.
-      </p>
-      <p class="featured__teaser-cta">
-        <a href="${r1SeriesPageUrl}" class="btn btn--primary">About Project R1</a>
-      </p>
+    <div class="mission__grid">
+      <div class="mission__copy">
+        <div class="featured__teaser-body mission__body">
+          <p>
+            <strong>Project R1</strong> follows real training toward a full UK licence on a Yamaha R1, filmed with Francis Noakes from <a href="https://www.youtube.com/@drivingschooltv" class="featured__inline-link" target="_blank" rel="noopener noreferrer">Driving School TV</a>. If you want to see what Mod 1, Mod 2, and road riding look like on a superbike, tune in on YouTube.
+          </p>
+          <p class="featured__teaser-cta">
+            <a href="${r1SeriesPageUrl}" class="btn btn--primary">About Project R1</a>
+          </p>
+        </div>
+      </div>
+      <div class="mission__media">
+        <a
+          href="${r1SeriesPageUrl}"
+          class="featured__teaser-link"
+          aria-label="About Project R1 (opens Project R1 page)">
+          <img
+            class="featured__teaser-cover"
+            src="${r1CoverImg}"
+            alt="Project R1: Yamaha R1"
+            width="800"
+            height="450"
+            decoding="async"
+            loading="lazy">
+        </a>
+      </div>
     </div>
   </div>
 </section>

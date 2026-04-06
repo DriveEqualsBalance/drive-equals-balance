@@ -827,8 +827,7 @@ code {
 }
 
 .featured.featured--teaser .featured__inner {
-  max-width: 42rem;
-  margin-inline: auto;
+  max-width: none;
 }
 
 .featured__teaser-body.mission__body {
@@ -837,6 +836,37 @@ code {
 
 .featured__teaser-cta {
   margin: 1.35rem 0 0;
+}
+
+.featured__teaser-link {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.08),
+    0 12px 24px -4px rgba(0, 0, 0, 0.12);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.featured__teaser-link:hover {
+  box-shadow:
+    0 6px 12px -2px rgba(0, 0, 0, 0.12),
+    0 14px 28px -6px rgba(0, 0, 0, 0.14);
+}
+
+.featured__teaser-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.featured__teaser-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .r1-series__fact-card {
