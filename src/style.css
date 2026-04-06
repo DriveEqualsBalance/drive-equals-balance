@@ -906,6 +906,55 @@ code {
   margin-bottom: 0.25rem;
 }
 
+.r1-sponsors__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 6vw, 3.5rem);
+}
+
+.r1-sponsors__item {
+  margin: 0;
+}
+
+.r1-sponsors__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  border-radius: 8px;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.r1-sponsors__link:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.r1-sponsors__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.r1-sponsors__logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+}
+
+.r1-sponsors__logo {
+  display: block;
+  max-width: min(280px, 42vw);
+  max-height: 72px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 .r1-series__caption {
   margin: 0.85rem 0 0;
   font-size: 0.9rem;

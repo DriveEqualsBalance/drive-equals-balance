@@ -1,6 +1,8 @@
 import './style.css'
 import heroImg from './assets/logo.png'
 import r1CoverImg from './assets/r1-cover.JPG'
+import rncLogo from './assets/rnc-logo.png'
+import passmastersLogo from './assets/PassmastersMC.webp'
 import { initSiteNav } from './init-site-nav.js'
 import { getSiteNavHtml } from './site-nav-html.js'
 import { getSiteFooterHtml } from './site-footer-html.js'
@@ -113,7 +115,7 @@ ${getSiteNavHtml({
             <li><span class="r1-series__fact-label">Format</span> Five episodes, London-based</li>
             <li><span class="r1-series__fact-label">Tests</span> Mod 1 &amp; Mod 2 (full licence path)</li>
             <li><span class="r1-series__fact-label">Bike</span> Yamaha R1 (supersport)</li>
-            <li><span class="r1-series__fact-label">Schedule</span> Episodes rolling through 2026</li>
+            <li><span class="r1-series__fact-label">Schedule</span> Episodes rolling through May and June 2026</li>
           </ul>
         </div>
       </div>
@@ -166,6 +168,38 @@ ${getSiteNavHtml({
       </div>
       ${watchSectionMediaHtml}
     </div>
+  </div>
+</section>
+
+<section id="sponsors" class="mission r1-sponsors" aria-labelledby="sponsors-heading">
+  <div class="mission__inner">
+    <h2 id="sponsors-heading" class="mission__title">Sponsors</h2>
+    <ul class="r1-sponsors__list" role="list">
+      <li class="r1-sponsors__item">
+        <a
+          href="https://passmastersmct.co.uk/"
+          class="r1-sponsors__link"
+          target="_blank"
+          rel="noopener noreferrer">
+          <img
+            class="r1-sponsors__logo"
+            src="${passmastersLogo}"
+            width="280"
+            height="120"
+            alt="Pass Masters Motorcycle Training">
+        </a>
+      </li>
+      <li class="r1-sponsors__item">
+        <span class="r1-sponsors__logo-wrap">
+          <img
+            class="r1-sponsors__logo"
+            src="${rncLogo}"
+            width="200"
+            height="80"
+            alt="RNC">
+        </span>
+      </li>
+    </ul>
   </div>
 </section>
 

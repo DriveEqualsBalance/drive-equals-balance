@@ -42,6 +42,13 @@ export function getSiteFooterHtml({ assetBase, homeUrl, currentPage }) {
           rel="noopener noreferrer">
           Pass Masters Motorcycle Training
         </a>
+        <a
+          href="https://www.rncmotorcycles.co.uk/"
+          class="site-footer__partner-link"
+          target="_blank"
+          rel="noopener noreferrer">
+          RNC Motorcycles
+        </a>
         <a href="${partnerHref}" class="site-footer__collab-link">
           Partner with Drive Equals Balance
         </a>
