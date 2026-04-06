@@ -1,6 +1,6 @@
 import './style.css'
 import heroImg from './assets/logo.png'
-import r1CoverImg from './assets/r1-cover.jpg'
+import r1CoverImg from './assets/r1-cover.JPG'
 import { initSiteNav } from './init-site-nav.js'
 import { getSiteNavHtml } from './site-nav-html.js'
 import { getSiteFooterHtml } from './site-footer-html.js'
@@ -10,7 +10,7 @@ const assetBase = import.meta.env.BASE_URL
 const homeUrl = assetBase.endsWith('/') ? assetBase : `${assetBase}/`
 const r1SeriesPageUrl = `${assetBase}r1-series.html`
 
-/** First episode or trailer — leave empty to show channel links only. */
+/** First episode or trailer (leave empty to show channel links only). */
 const r1SeriesYoutubeVideoId = ''
 
 const watchSectionMediaHtml = r1SeriesYoutubeVideoId
@@ -20,7 +20,7 @@ const watchSectionMediaHtml = r1SeriesYoutubeVideoId
           width="560"
           height="315"
           src="https://www.youtube.com/embed/${r1SeriesYoutubeVideoId}"
-          title="Project R1 — Full A licence on a Yamaha R1"
+          title="Project R1: full A licence on a Yamaha R1"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
@@ -41,7 +41,7 @@ const watchSectionMediaHtml = r1SeriesYoutubeVideoId
           class="featured__collab-link"
           target="_blank"
           rel="noopener noreferrer">
-          Driving School TV — Francis Noakes
+          Driving School TV, Francis Noakes
         </a>
       </div>
     </div>`
@@ -100,10 +100,10 @@ ${getSiteNavHtml({
       <div class="mission__copy">
         <div class="mission__body">
           <p>
-            We&rsquo;re documenting the full journey from learner training toward a UK Category A licence — on a <strong>Yamaha R1</strong>, a superbike you almost never see used for licence work. That rarity is the point: honest, practical coaching on a machine that demands respect, filmed so riders can see what Mod 1, Mod 2, and real road riding actually look like when the stakes are high.
+            We&rsquo;re documenting the full journey from learner training toward a UK Category A licence, on a <strong>Yamaha R1</strong>, a superbike you almost never see used for licence work. That rarity is the point: honest, practical coaching on a machine that demands respect, filmed so riders can see what Mod 1, Mod 2, and real road riding actually look like when the stakes are high.
           </p>
           <p>
-            The series is built for anyone revising for their tests, curious about DAS, or simply interested in how a supersport behaves when you&rsquo;re still building habits for life on the road — not just for the examiner.
+            The series is built for anyone revising for their tests, curious about DAS, or simply interested in how a supersport behaves when you&rsquo;re still building habits for life on the road, not just for the examiner.
           </p>
         </div>
       </div>
@@ -129,10 +129,10 @@ ${getSiteNavHtml({
       <div class="mission__copy">
         <div class="mission__body">
           <p>
-            I&rsquo;m <strong>Dan Norford</strong> — motorcycle instructor behind Drive Equals Balance. I&rsquo;m coaching <strong>Francis Noakes</strong> from the <a href="https://www.youtube.com/@drivingschooltv" class="featured__inline-link" target="_blank" rel="noopener noreferrer">Driving School TV</a> YouTube channel through the skills, manoeuvres, and on-road judgement the DVSA expects at test standard.
+            I&rsquo;m <strong>Dan Norford</strong>, motorcycle instructor behind Drive Equals Balance. I&rsquo;m coaching <strong>Francis Noakes</strong> from the <a href="https://www.youtube.com/@drivingschooltv" class="featured__inline-link" target="_blank" rel="noopener noreferrer">Driving School TV</a> YouTube channel through the skills, manoeuvres, and on-road judgement the DVSA expects at test standard.
           </p>
           <p>
-            You get two angles in one story: structured motorcycle instruction and Francis&rsquo;s experience building educational driving content for a large audience — so the series stays useful for learners first, without losing personality or pace.
+            You get two angles in one story: structured motorcycle instruction and Francis&rsquo;s experience building educational driving content for a large audience, so the series stays useful for learners first, without losing personality or pace.
           </p>
         </div>
       </div>
@@ -142,7 +142,7 @@ ${getSiteNavHtml({
             width="560"
             height="315"
             src="https://www.youtube.com/embed/dsiLphjd0XM"
-            title="Drive Equals Balance — introduction"
+            title="Drive Equals Balance: introduction"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
