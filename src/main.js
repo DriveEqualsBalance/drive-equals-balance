@@ -1,10 +1,13 @@
 import './style.css'
 import heroImg from './assets/logo.png'
+import { initSiteNav } from './init-site-nav.js'
+import { getSiteNavHtml } from './site-nav-html.js'
+import { getSiteFooterHtml } from './site-footer-html.js'
+import { getPartnerSectionHtml } from './partner-section-html.js'
 
 const assetBase = import.meta.env.BASE_URL
-
-/** Set your partnership inbox (leave empty to hide the email button). */
-const partnerEmail = 'driveequalsbalance@gmail.com'
+const homeUrl = assetBase.endsWith('/') ? assetBase : `${assetBase}/`
+const r1SeriesPageUrl = `${assetBase}r1-series.html`
 
 /** YouTube IDs from the watch URL (…watch?v=____). Swap in four of your lesson clips. */
 const lessonGalleryVideos = [
@@ -70,35 +73,12 @@ const testRoutesGalleryHtml =
     </div>`
 
 document.querySelector('#app').innerHTML = `
-<header class="site-nav">
-  <div class="site-nav__bar">
-    <a
-      href="#center"
-      class="site-nav__brand"
-      aria-label="Drive Equals Balance — top of page">
-      <img src="${heroImg}" width="100" height="100" alt="" decoding="async">
-    </a>
-    <button
-      type="button"
-      class="site-nav__toggle"
-      aria-expanded="false"
-      aria-controls="site-nav-menu"
-      aria-label="Open page sections menu">
-      <span class="site-nav__toggle-bars" aria-hidden="true">
-        <span class="site-nav__toggle-bar"></span>
-        <span class="site-nav__toggle-bar"></span>
-        <span class="site-nav__toggle-bar"></span>
-      </span>
-    </button>
-    <nav class="site-nav__menu" id="site-nav-menu" aria-label="On this page">
-      <ul class="site-nav__list">
-        <li><a href="#mission">Mission</a></li>
-        <li><a href="#lessons">Lessons</a></li>
-        <li><a href="#partner" class="site-nav__link--cta">Partner</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+${getSiteNavHtml({
+  heroImg,
+  homeUrl,
+  r1SeriesPageUrl,
+  currentPage: 'home',
+})}
 <section id="center" class="hero-container">
   <div class="hero-bg" aria-hidden="true">
     <video class="hero-background" autoplay muted loop playsinline preload="auto">
@@ -135,6 +115,21 @@ document.querySelector('#app').innerHTML = `
       </li>
     </ul>
   </nav>
+</section>
+
+<section id="project-r1" class="featured featured--teaser" aria-labelledby="project-r1-heading">
+  <div class="featured__inner">
+    <p class="mission__eyebrow">Project R1</p>
+    <h2 id="project-r1-heading" class="mission__title">Full A licence on a Yamaha R1</h2>
+    <div class="featured__teaser-body mission__body">
+      <p>
+        <strong>Project R1</strong> — five London episodes with me and Francis Noakes (<a href="https://www.youtube.com/@drivingschooltv" class="featured__inline-link" target="_blank" rel="noopener noreferrer">Driving School TV</a>): real Mod 1 and Mod 2 training on a superbike, with new episodes through 2026.
+      </p>
+      <p class="featured__teaser-cta">
+        <a href="${r1SeriesPageUrl}" class="btn btn--primary">About Project R1</a>
+      </p>
+    </div>
+  </div>
 </section>
 
 <section id="mission" class="mission" aria-labelledby="mission-heading">
@@ -222,127 +217,13 @@ document.querySelector('#app').innerHTML = `
   </div>
 </section>
 
-<section id="partner" class="partner" aria-labelledby="partner-heading">
-  <div class="partner__layout">
-    <div class="partner__main">
-      <h2 id="partner-heading">Partner With Drive Equals Balance</h2>
-      <p class="partner__lede">Let&rsquo;s collaborate on training, content, and brand partnerships.</p>
-      <div class="partner__body">
-        <p>
-          If you&rsquo;ve got an idea, a collaboration in mind, or you think there&rsquo;s a way we could work together, I&rsquo;d love to hear from you. Whether you&rsquo;re a brand, a training school, or a fellow creator, I&rsquo;m always open to opportunities that bring real value to riders and the community. Reach out and let&rsquo;s see what we can build together.
-        </p>
-      </div>
-    </div>
-    <aside class="partner__aside" aria-labelledby="partner-contact-heading">
-      <h3 id="partner-contact-heading" class="partner__aside-title">Get in touch</h3>
-      <p class="partner__aside-lede">Tell me a bit about your idea.</p>
-      <ul class="partner__cta-list">
-        <li>
-          <a
-            href="https://www.instagram.com/drive.equals.balance"
-            class="partner__cta partner__cta--instagram"
-            target="_blank"
-            rel="noopener noreferrer">
-            <svg class="partner__cta-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#instagram-icon"></use></svg>
-            <span class="partner__cta-text">Message on Instagram</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/@driveequalsbalance"
-            class="partner__cta partner__cta--youtube"
-            target="_blank"
-            rel="noopener noreferrer">
-            <svg class="partner__cta-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#youtube-icon"></use></svg>
-            <span class="partner__cta-text">YouTube channel</span>
-          </a>
-        </li>
-        ${
-          partnerEmail
-            ? `<li>
-          <a
-            href="mailto:${partnerEmail}?subject=${encodeURIComponent('Partnership — Drive Equals Balance')}"
-            class="partner__cta partner__cta--email"
-            aria-label="Email ${partnerEmail} about a partnership">
-            <svg class="partner__cta-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#email-icon"></use></svg>
-            <span class="partner__cta-text">Email</span>
-          </a>
-        </li>`
-            : ''
-        }
-      </ul>
-    </aside>
-  </div>
-</section>
+${getPartnerSectionHtml({ assetBase })}
 
-<footer class="site-footer">
-  <div class="site-footer__inner${partnerEmail ? ' site-footer__inner--three-cols' : ''}">
-    <section class="site-footer__block" aria-labelledby="footer-partners-heading">
-      <h2 id="footer-partners-heading">Partners</h2>
-      <div class="site-footer__partner-links">
-        <a
-          href="https://passmastersmct.co.uk/"
-          class="site-footer__partner-link"
-          target="_blank"
-          rel="noopener noreferrer">
-          Pass Masters Motorcycle Training
-        </a>
-        <a href="#partner" class="site-footer__collab-link">
-          Partner with Drive Equals Balance
-        </a>
-      </div>
-    </section>
-    <section class="site-footer__block site-footer__block--social" aria-labelledby="footer-social-heading">
-      <h2 id="footer-social-heading">Social</h2>
-      <ul class="site-footer__social-list">
-        <li>
-          <a
-            href="https://www.youtube.com/@driveequalsbalance"
-            class="site-footer__social-link"
-            target="_blank"
-            rel="noopener noreferrer">
-            <svg class="site-footer__social-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#youtube-icon"></use></svg>
-            <span>YouTube</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.instagram.com/drive.equals.balance"
-            class="site-footer__social-link"
-            target="_blank"
-            rel="noopener noreferrer">
-            <svg class="site-footer__social-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#instagram-icon"></use></svg>
-            <span>Instagram</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/@driveequalsbalance?sub_confirmation=1"
-            class="site-footer__social-link"
-            target="_blank"
-            rel="noopener noreferrer">
-            <svg class="site-footer__social-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#subscribe-icon"></use></svg>
-            <span>Subscribe on YouTube</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-    ${
-      partnerEmail
-        ? `<section class="site-footer__block site-footer__block--contact" aria-labelledby="footer-contact-heading">
-      <h2 id="footer-contact-heading">Contact</h2>
-      <a
-        href="mailto:${partnerEmail}"
-        class="site-footer__contact-link">
-        <svg class="site-footer__contact-icon" role="presentation" aria-hidden="true"><use href="${assetBase}icons.svg#email-icon"></use></svg>
-        <span class="site-footer__contact-email">${partnerEmail}</span>
-      </a>
-    </section>`
-        : ''
-    }
-  </div>
-  <p class="site-footer__meta">© Drive Equals Balance</p>
-</footer>
+${getSiteFooterHtml({
+  assetBase,
+  homeUrl,
+  currentPage: 'home',
+})}
 `
 
 const heroVideo = document.querySelector('#center .hero-background')
@@ -360,89 +241,4 @@ if (heroVideo) {
   })
 }
 
-const siteNav = document.querySelector('.site-nav')
-const siteNavToggle = document.querySelector('.site-nav__toggle')
-const siteNavMenu = document.querySelector('.site-nav__menu')
-
-function syncSiteNavScrollFade() {
-  if (!siteNav) return
-  /* Bar background vars only used below 769px; hero + footer use transparent CSS */
-  if (window.matchMedia('(min-width: 769px)').matches) {
-    siteNav.style.removeProperty('--site-nav-bg-alpha')
-    siteNav.style.removeProperty('--site-nav-blur')
-    return
-  }
-  const y = window.scrollY || document.documentElement.scrollTop
-  const t = Math.min(1, y / 420)
-  const alpha = 0.72 * (1 - t) + 0.22 * t
-  const blurPx = 14 * (1 - t) + 6 * t
-  siteNav.style.setProperty('--site-nav-bg-alpha', String(alpha))
-  siteNav.style.setProperty('--site-nav-blur', `${blurPx}px`)
-}
-
-function syncSiteNavPageTheme() {
-  if (!siteNav) return
-  const hero = document.querySelector('#center')
-  const footer = document.querySelector('.site-footer')
-  if (!hero) return
-  const navH = siteNav.getBoundingClientRect().height
-  const heroBottom = hero.getBoundingClientRect().bottom
-  /* Nav strip below hero content → light sections; switch back over dark footer */
-  const pastHero = heroBottom <= navH + 1
-  let overFooter = false
-  if (footer) {
-    const ft = footer.getBoundingClientRect()
-    overFooter = ft.top < navH && ft.bottom > 0
-  }
-  siteNav.classList.toggle('site-nav--on-light', pastHero && !overFooter)
-}
-
-function closeSiteNavMenu() {
-  if (!siteNav || !siteNavToggle || !siteNavMenu) return
-  siteNav.classList.remove('site-nav--menu-open')
-  siteNavToggle.setAttribute('aria-expanded', 'false')
-  siteNavToggle.setAttribute('aria-label', 'Open page sections menu')
-}
-
-function onSiteNavScroll() {
-  syncSiteNavScrollFade()
-  syncSiteNavPageTheme()
-}
-
-if (siteNav) {
-  window.addEventListener('scroll', onSiteNavScroll, { passive: true })
-  window.addEventListener(
-    'resize',
-    () => {
-      syncSiteNavScrollFade()
-      syncSiteNavPageTheme()
-    },
-    { passive: true }
-  )
-  onSiteNavScroll()
-}
-
-if (siteNav && siteNavToggle && siteNavMenu) {
-  siteNavToggle.addEventListener('click', () => {
-    const isOpen = siteNav.classList.toggle('site-nav--menu-open')
-    siteNavToggle.setAttribute('aria-expanded', String(isOpen))
-    siteNavToggle.setAttribute(
-      'aria-label',
-      isOpen ? 'Close page sections menu' : 'Open page sections menu'
-    )
-  })
-
-  siteNavMenu.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', () => closeSiteNavMenu())
-  })
-
-  document.addEventListener('click', (e) => {
-    if (!siteNav.classList.contains('site-nav--menu-open')) return
-    if (siteNav.contains(e.target)) return
-    closeSiteNavMenu()
-  })
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSiteNavMenu()
-  })
-}
+initSiteNav()
