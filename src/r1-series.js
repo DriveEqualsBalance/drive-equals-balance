@@ -190,14 +190,18 @@ ${getSiteNavHtml({
         </a>
       </li>
       <li class="r1-sponsors__item">
-        <span class="r1-sponsors__logo-wrap">
+        <a
+          href="https://www.rncmotorcycles.co.uk/"
+          class="r1-sponsors__link"
+          target="_blank"
+          rel="noopener noreferrer">
           <img
             class="r1-sponsors__logo"
             src="${rncLogo}"
             width="200"
             height="80"
-            alt="RNC">
-        </span>
+            alt="RNC Motorcycles">
+        </a>
       </li>
     </ul>
   </div>
