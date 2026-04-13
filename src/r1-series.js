@@ -3,6 +3,7 @@ import heroImg from './assets/logo.png'
 import r1CoverImg from './assets/r1-cover.JPG'
 import rncLogo from './assets/rnc-logo.png'
 import passmastersLogo from './assets/PassmastersMC.webp'
+import macnaLogo from './assets/macna-logo.svg'
 import { initSiteNav } from './init-site-nav.js'
 import { getSiteNavHtml } from './site-nav-html.js'
 import { getSiteFooterHtml } from './site-footer-html.js'
@@ -201,6 +202,20 @@ ${getSiteNavHtml({
             width="200"
             height="80"
             alt="RNC Motorcycles">
+        </a>
+      </li>
+      <li class="r1-sponsors__item">
+        <a
+          href="https://www.macna.com/en"
+          class="r1-sponsors__link"
+          target="_blank"
+          rel="noopener noreferrer">
+          <img
+            class="r1-sponsors__logo"
+            src="${macnaLogo}"
+            width="220"
+            height="80"
+            alt="MACNA riding gear">
         </a>
       </li>
     </ul>
