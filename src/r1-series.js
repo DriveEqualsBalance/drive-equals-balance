@@ -4,6 +4,7 @@ import r1CoverImg from './assets/r1-cover.JPG'
 import rncLogo from './assets/rnc-logo.png'
 import passmastersLogo from './assets/PassmastersMC.webp'
 import macnaLogo from './assets/macna-logo.svg'
+import chigeeLogo from './assets/chigee-logo.webp'
 import { initSiteNav } from './init-site-nav.js'
 import { getSiteNavHtml } from './site-nav-html.js'
 import { getSiteFooterHtml } from './site-footer-html.js'
@@ -144,13 +145,13 @@ ${getSiteNavHtml({
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/dsiLphjd0XM"
-            title="Drive Equals Balance: introduction"
+            src="https://www.youtube.com/embed/vMC5i_98EAI?si=edz0HD__RfGOG2gR"
+            title="R1 Series: introduction"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
         </div>
-        <p class="r1-series__caption">More on the Drive Equals Balance approach on the <a href="${homeUrl}" class="featured__inline-link">home page</a>.</p>
+        <p class="r1-series__caption">More on the Drive Equals Balance approach <a href="${homeUrl}" class="featured__inline-link">here</a>.</p>
       </div>
     </div>
   </div>
@@ -216,6 +217,20 @@ ${getSiteNavHtml({
             width="220"
             height="80"
             alt="MACNA riding gear">
+        </a>
+      </li>
+      <li class="r1-sponsors__item">
+        <a
+          href="https://chigee.com/"
+          class="r1-sponsors__link"
+          target="_blank"
+          rel="noopener noreferrer">
+          <img
+            class="r1-sponsors__logo"
+            src="${chigeeLogo}"
+            width="220"
+            height="80"
+            alt="Chigee">
         </a>
       </li>
     </ul>
