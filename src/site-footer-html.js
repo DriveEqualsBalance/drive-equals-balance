@@ -49,6 +49,20 @@ export function getSiteFooterHtml({ assetBase, homeUrl, currentPage }) {
           rel="noopener noreferrer">
           RNC Motorcycles
         </a>
+        <a
+          href="https://www.macna.com/en"
+          class="site-footer__partner-link"
+          target="_blank"
+          rel="noopener noreferrer">
+          MACNA
+        </a>
+        <a
+          href="https://chigee.com/"
+          class="site-footer__partner-link"
+          target="_blank"
+          rel="noopener noreferrer">
+          Chigee
+        </a>
         <a href="${partnerHref}" class="site-footer__collab-link">
           Partner with Drive Equals Balance
         </a>
